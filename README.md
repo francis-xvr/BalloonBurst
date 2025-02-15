@@ -1,2 +1,1 @@
-# BalloonBurst
-A complete ReactJS based simple game for toddlers to learn mouse handling
+A simple game for toddlers to learn mouse movements and click

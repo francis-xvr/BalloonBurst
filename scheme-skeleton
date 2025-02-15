@@ -1,0 +1,87 @@
+create database balloonburst;
+
+create table player(
+ player_id int auto_increment primary key,
+ username varchar(50) not null,
+ email varchar(100) not null,
+ created_at timestamp default current_timestamp not null
+ );
+
+
+create table game_strategy(
+ game_strategy_id int primary key,
+ no_of_balloons int not null,
+ no_of_colors int not null,
+ static_balloon boolean not null,
+ movement varchar(25),
+ movement_factor int not null default 10
+ );
+
+insert into game_strategy values
+ (1, 1, 1, 1, null, 10),
+ (2, 3, 1, 1, null, 10),
+ (3, 6, 2, 1, null, 10),
+ (4, 10, 3, 1, null, 10),
+ (5, 1, 1, 0, 'btot', 10),
+ (6, 3, 1, 0, 'btot', 10),
+ (7, 2, 1, 0, 'ltor', 10),
+ (8, 4, 2, 0, 'ltor', 10),
+ (9, 2, 1, 0, 'ttob', 10),
+ (10, 5, 3, 0, 'ttob', 10),
+ (11, 3, 1, 0, 'rtol', 10),
+ (12, 6, 3, 0, 'rtol', 10),
+ (13, 3, 1, 0, 'btot', 15),
+ (14, 4, 2, 0, 'ttob', 15),
+ (15, 5, 3, 0, 'ltor', 15),
+ (16, 10, 4, 0, 'rtol', 20);
+
+create table game_level(
+ level_id int primary key,
+ level int not null,
+ level_name varchar(50) not null,
+ level_strategy_id int not null,
+ foreign key (level_strategy_id) references game_strategy (game_strategy_id)
+ );
+
+insert into game_level values
+ (1, 1, 'The Beginning', 1),
+ (2, 2, 'Getting hang of it', 2),
+ (3, 3, 'I am not single colour', 3),
+ (4, 4, 'Even more balloons', 4),
+ (5, 5, 'Catch me if you can', 5),
+ (6, 6, 'Catch me more', 6),
+ (7, 7, 'Things Go Sideways', 7),
+ (8, 8, 'And more...', 8),
+ (9, 9, 'Every things goes up will,', 9),
+ (10, 10, 'And repeat..', 10),
+ (11, 11, 'Its right this time', 11),
+ (12, 12, 'And again..', 12),
+ (13, 13, 'Speed Up!',13),
+ (14, 14, 'And down',14),
+ (15, 15, 'Sideways speed',15),
+ (16, 16, 'More Speed!',16);
+
+create table player_tier(
+ player_tier_id int auto_increment primary key,
+ tier_name varchar(25) not null,
+ tier_legend_url varchar(30) not null
+ );
+
+insert into player_tier values
+ (1, 'Noobie', 'noobie.svg'),
+ (2, 'Beginner', 'beginner.svg'),
+ (3, 'Amateur', 'amateur.svg'),
+ (4, 'Rookie', 'rookie.svg'),
+ (5, 'Proffesional', 'pro.svg'),
+ (6, 'Master', 'master.svg');
+
+create table player_game_data(
+    game_data_id int auto_increment primary key,
+    player_id int not null,
+    highscore int not null,
+    current_level int default 1 not null,
+    player_tier_id int default 1 not null,
+    foreign key (player_id) references player (player_id),
+    foreign key (current_level) references game_level (level_id),
+    foreign key (player_tier_id) references player_tier (player_tier_id)
+ );

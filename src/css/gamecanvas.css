@@ -1,0 +1,544 @@
+.gameCanvasContainer{
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(1, 55, 78);
+    display: flex;
+    justify-content: center;
+}
+
+.balloonContainer{
+    height: 148px ;
+    width: 74px;
+    background-repeat: no-repeat;
+    animation: balloonidle 1s steps(13) infinite normal forwards;
+}
+
+@keyframes balloonburst{
+    from{
+        background-position: -962px;
+    }
+    to{
+        background-position: -2220px;
+    }
+}
+
+@keyframes balloonidle{
+    from{
+        background-position: 0px;
+    }
+    to{
+        background-position: -962px;
+    }  
+}
+
+.ErrorPageDiv{
+    color: white;
+}
+
+.gameConsoleContainer{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.gameMenuContainer{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    background-color: rgb(1, 55, 78);
+    border-radius: 0.5rem;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: scale-in-center 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+@keyframes scale-in-center {
+    0% {
+        transform: translateX(1000px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+  }
+
+.menuTable{
+    position: absolute;
+    width: 50%;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+    user-select: none;
+    border: 5px solid aliceblue;
+    background-color: rgb(237, 237, 226);
+    border-radius: 0.8rem;
+    box-shadow: 10px 10px 0px 2px rgba(0, 0, 0, 0.412);
+    z-index: 100;
+
+}
+
+.menuHeaderRow{
+    /* color: rgb(255, 246, 246); */
+    color: rgb(38, 38, 38);
+    font-size: 3.5rem;
+    height: 7rem;
+    font-family: 'Courier New', Courier, monospace;
+    vertical-align: baseline;
+    font-weight: bold;
+}
+
+.menuBodyRow{
+    height: 5rem;
+}
+
+.menuOption{
+    font-size: 1.5rem;
+    font-weight: bold;
+   /* color: rgb(221, 228, 233); */
+    color: rgb(19, 19, 19);
+    cursor: pointer;
+    transition: 0.2s;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.menuOption:hover{
+    font-size: 1.7rem;
+}
+
+.menuOptionDisabled{
+    font-size: 1.5rem;
+    color: rgb(116, 119, 122);
+}
+
+.gameOverCardBlock{
+    position: absolute;
+    top: 20%;
+    height: 60%;
+    width: 50%;
+    color: rgba(240, 248, 255, 0.87);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: left;
+    background-color: #7cb580;
+    border: 1px solid white;
+    border-radius: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.gameOverTitle{
+    margin-top: 2rem;
+    font-size: 5rem;
+    font-weight: bold;
+    font-style: italic;
+    text-shadow: 2px 2px 0px rgba(4, 255, 205, 0.418),
+     3px 3px 0px rgba(0, 0, 0, 0.4);
+    border: 10px solid rgb(5, 112, 219);
+    color: rgb(5, 112, 219);
+    background-color: antiquewhite;
+    width: fit-content;
+    padding: 0.75rem 2.5rem 0.75rem 2.5rem;
+    height: 6rem;
+    border-radius: 1rem;
+    box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0.405),
+     inset  1px 1px 5px 1px rgba(0, 0, 0, 0.485);
+}
+
+.gameOverMessage{
+    font-size: 1rem;
+    margin-top: 4rem;
+}
+.gameOverControls{
+    position: absolute;
+    bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 80%;
+}
+.gameOverControlsButton{
+    height: 3rem;
+    width: 35%;
+    border: 1px solid white;
+    line-height: 3rem;
+    text-align: center;
+    color: aliceblue;
+    font-size: 2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    border-radius: 0.25rem;
+    background-color: rgb(9, 117, 224);
+    box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.259);
+    border: 2px solid aliceblue;
+    padding-left: 0.5rem;
+    transition: 0.3s;
+}
+.gameOverControlsButton:hover{
+    background-color: rgb(19, 131, 243);
+}
+.gameOverControlsButton:active{
+    box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.259);
+}
+.gameOverDecoy{
+    width: 5%;
+}
+
+.scoreCardCointainer{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+}
+
+.scoreCard{
+    height: 100%;
+    text-shadow: 0px 0px 0px black;
+}
+.scoreCardAnim{
+    height: 100%;
+    text-shadow: 0px 0px 0px black;
+    animation: scoreScale 0.3s ease 0s normal forwards;
+}
+@keyframes scoreScale {
+	0% {
+		transform: scale(1);
+        text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+
+	}
+
+	70% {
+		transform: scale(1.2);
+        text-shadow:0px 0px 10px rgba(255, 255, 255, 0.32);
+	}
+
+	100% {
+		transform: scale(1);
+        text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+	}
+}
+.score{
+    color: rgb(248, 247, 247);
+    font-size: 6rem;
+    transition: 0.3s;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+}
+
+
+.levelCard{
+    color: rgba(240, 248, 255, 0.87);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2rem;
+    margin-top: 2rem;
+    font-weight: bold;
+    text-align: left;
+    padding-left: 3rem;
+}
+.timerSpan{
+    margin-left: 2rem;
+    height: 2rem;
+    display: inline;
+}
+
+.clock{
+    position: absolute;
+    height: 2rem;
+    width: 1.5rem;
+    margin-top: 0.1rem;
+    margin-left: 1rem;
+}
+.timerSpan span{
+    position: absolute;
+    margin-left: 3.5rem;
+}
+.menuCard{
+    color: rgba(240, 248, 255, 0.87);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2rem;
+    margin-top: 2rem;
+    font-weight: bold;
+    transition: 0.3s;
+    text-align: right;
+    padding-right: 3rem;
+    user-select: none;
+}
+.menuCard:hover{
+    color: rgba(240, 248, 255);
+    font-size: 2.05rem;
+}
+
+.progressCardContainer{
+    height: 70%;
+    width: 35%;
+    z-index: 100;
+    user-select: none;
+}
+.progressCardBackdrop{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.54);
+    z-index: 0;
+}
+
+.progressCardBlock{
+    position: relative;
+    background-color: #7cb580;
+    height: 100%;
+    width: 100%;
+    color: aliceblue;
+    z-index: 100;
+    padding: 2rem 1rem 2rem 1rem;
+    margin-top: 3rem;
+    border-radius: 0.5rem;
+    border : 4px solid rgb(244, 241, 226);
+    box-shadow: 10px 10px 0px 2px rgba(0, 0, 0, 0.259);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: slide-in-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@keyframes slide-in-bottom{
+    0% {
+        transform: translateY(1000px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+}
+
+.progressTitle{
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    color: rgb(2, 103, 147);
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    font-size: 3rem;
+}
+.gameLevelName{
+    color: #ec3737;
+    font-family: monospace;
+    font-size: 1rem;
+}
+
+.awesomeBlock{
+    margin-top: 2rem;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.awesome{
+    font-size: 2rem;
+    font-weight: bold;
+}
+.awesomeBody{
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+.progressScoreBlock{
+    margin-top: 2.5rem;
+}
+.progressScoreTitle{
+    color: rgb(7, 106, 205);
+    font-size: 2rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+}
+.progressScoreDiv{
+    height: 7rem;
+    min-width: 9rem;
+    border: 4px solid rgb(54, 116, 193);
+    background-color: rgb(26, 52, 88);
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 3px 3px 1px 0px rgba(22, 22, 22, 0.251),
+        inset 0px 0px 5px 5px rgba(0, 0, 0, 0.388);
+    padding: 0.5rem;
+}
+.progressScore{
+    font-size: 5rem;
+    line-height: 7rem;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(225, 240, 254);
+}
+
+.nextGameButton{
+    position: absolute;
+    bottom: 2rem;
+    height: 4rem;
+    width: 30%;
+    color: aliceblue;
+    font-size: 2.5rem;
+    line-height: 4rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    border-radius: 0.5rem;
+    background-color: rgb(9, 117, 224);
+    box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.259);
+    border: 2px solid aliceblue;
+    padding-left: 0.5rem;
+    transition: 0.3s;
+}
+.nextGameButton:hover{
+    background-color: rgb(19, 131, 243);
+}
+.nextGameButton:active{
+    box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.259);
+}
+
+.nextbuttonimage{
+    height: 1.5rem;
+    width: 1.5rem;
+    margin-left: 0.75rem;
+}
+
+.loadingScreen{
+    position: fixed;
+    top: 50%;
+    color: aliceblue;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: 1.5rem;
+    z-index: 10;
+}
+
+.loadingDash{
+    animation: blink 1s cubic-bezier(0.075, 0.82, 0.165, 1) infinite normal forwards;
+}
+
+@keyframes blink {
+    0%{
+        opacity: 0.1;
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0.1;
+    }
+}
+
+.exitFromProgress{
+    position: absolute;
+    right: 0;
+    top: 0rem;
+    padding: 0.5rem;
+}
+
+.exitFromProgress{
+    height: 2.5rem;
+    width: 2.5rem;
+    transition: 0.3s;
+}
+
+.exitFromProgress:hover{
+    transform: scale(1.1);
+}
+.endScreen{
+    color: aliceblue;
+    margin-top: 15%;
+}
+
+.endTitle{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 4rem;
+    margin-bottom: 2rem;
+    font-weight: bold;
+}
+
+.levelTitleBlock{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    color: aliceblue;
+    font-style: italic;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 5rem;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.levelTitle{
+    position: absolute;
+    top: 40%;
+    display: block;
+    width: fit-content;
+    overflow: hidden;
+    white-space: nowrap;
+    color: antiquewhite;
+    animation: levelnamereveal 2s cubic-bezier(0, 0.45, 0.5, 0.95) normal forwards;
+    text-shadow: 2px 3px 0px rgb(255 0 252),
+     -2px -3px 1px rgb(0, 255, 255);
+}
+@keyframes levelnamereveal {
+    0%{
+        left: 0%
+    }
+    50%{
+        left:30%
+    }
+    100%{
+        left:110%
+    }
+}
+.upperBar{
+    position: absolute;
+    height: 0.75rem;
+    top: calc(40% - 2rem);
+    width: 50vw;
+    background-color: aliceblue;
+    animation: levelnamerevealUBar 2s cubic-bezier(0, 0.5, 0.5, 0.9) normal forwards;
+    box-shadow: 4px 2px 0px rgb(255 0 252),
+    -3px -2px 1px rgb(3 255 237);
+}
+@keyframes levelnamerevealUBar {
+    0%{
+        right: -100%
+    }
+    50%{
+        right: 7%
+    }
+    100%{
+        right: 110%
+    }
+}
+
+.lowerBar{
+    position: absolute;
+    height: 0.75rem;
+    top: calc(40% + 7rem);
+    width: 50vw;
+    left: -100%;
+    background-color: aliceblue;
+    animation: levelnamerevealLBar 2s cubic-bezier(0, 0.45, 0.5, 1) normal forwards;
+    box-shadow: 4px 2px 0px rgb(255 0 252),
+    -3px -2px 1px rgb(3 255 237);
+}
+
+@keyframes levelnamerevealLBar {
+    0%{
+        left: -100%
+    }
+    50%{
+        left: 5%
+    }
+    100%{
+        left: 110%
+    }
+}

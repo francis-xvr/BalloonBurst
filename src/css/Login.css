@@ -1,0 +1,84 @@
+.loginContainer{
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background-color: rgb(1, 55, 78);
+    display: flex;
+    justify-content: center;
+}
+
+.loginForm{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 2rem;
+    height: fit-content;
+    margin-top: 8rem;
+    background-color: rgb(226, 226, 226);
+    border-radius: 0.5rem;
+    box-shadow: 0 0 3px 1px rgb(183, 183, 183);
+}
+
+.loginHeader{
+    text-align: left;
+    margin-top: 0;
+    color: rgb(33, 33, 33);
+}
+
+/* .fieldContainer{
+} */
+
+.loginField{
+    height: 2.5rem;
+    width: 21rem;
+    margin-top: 1rem;
+    font-size: medium;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.1rem;
+}
+
+.loginButton{
+    all: unset;
+    background-color: dodgerblue;
+    border: 1px solid dodgerblue;
+    height: 2.5rem;
+    width: 21rem;
+    padding: 0.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 0.2rem;
+    color: white;
+    font-size: large;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.loginButton:hover{
+    background-color: rgb(93, 174, 255);
+}
+
+#loginErrorMessage{
+    position: relative;
+    top: 0;
+    color: rgb(255, 18, 18);
+    font-size: small;
+    height: 1rem;
+    text-align: left;
+}
+
+.lineBreak{
+    color: rgb(127, 127, 127);
+    margin-top: 0.5rem;
+    height: 1.5rem;
+    font-size: 1rem;
+}
+
+#logoutContainer{
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+#logoutDiv{
+    margin-top: 3rem;
+    font-size: 2rem;
+}
