@@ -16,15 +16,14 @@ export default class GameManager{
         this.game = null;
         try{
             const res = await getLevelTerms(this.currentLevel);
-            if(res.status===200){
-                if(res.data == "No_levels"){
-                    return null;
-                }
-                this.levelData = new GameLevel(res.data);
-                this.game = new GameController(this.levelData);
-                this.isRunning = true;
-                return this.game;
-            }
+            // if(res.status===200){
+                // if(res.data == "No_levels"){
+                    // return null;
+                // }
+            this.levelData = new GameLevel(res);
+            this.game = new GameController(this.levelData);
+            this.isRunning = true;
+            return this.game;
 
         }catch(err){
             console.error(err);

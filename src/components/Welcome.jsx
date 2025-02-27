@@ -9,7 +9,8 @@ export default function WelcomeComponent(){
     const navigate = useNavigate();
     function startGame(){
         authContext.playClick();
-        navigate("/balloonburst");
+        authContext.playAudio();
+        navigate("/BalloonBurst/game");
     }
 
     function toggleAudio(){
@@ -45,9 +46,9 @@ export default function WelcomeComponent(){
                     <img className="playimage" src="./images/playerpic.svg"></img>
                     <span>{authContext.username}</span>
                 </div>
-                <div className='playerScoreBlock'><span>Highscore : {authContext.playerData.highscore}</span>
+                {/* <div className='playerScoreBlock'><span>Highscore : {authContext.playerData.highscore}</span>
                     <LeaderBoard/>
-                </div>
+                </div> */}
             </div>
             <div className='gameSettingsContainer'>
                 <div className='audioBlock'>

@@ -62,7 +62,7 @@ export default function GameConsole(){
         if(gameManager.current.isRunning){
             gameManager.current.stop();
         }
-        navigate('/');
+        navigate('/BalloonBurst');
     }
     function cancelMenu(){
         authContext.playClick();
@@ -72,7 +72,7 @@ export default function GameConsole(){
             setShowMenu(false);
         }
         else
-            navigate("/");
+            navigate("/BalloonBurst");
     }
     const controls = {
         newgame: newGame,

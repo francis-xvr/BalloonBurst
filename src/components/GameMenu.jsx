@@ -38,9 +38,9 @@ export default function GameMenu({isRunning, controls}){
             <div className='playerCardContainer'>
                 <div className='playerNameBlock'>
                     <img className="playimage" src="./images/playerpic.svg"></img>
-                    <span>{authContext.username}</span>
+                    {/* <span>{authContext.username}</span> */}
                 </div>
-                <div className='playerScoreBlock'><span>Highscore : {authContext.playerData.highscore}</span></div>
+                {/* <div className='playerScoreBlock'><span>Highscore : {authContext.playerData.highscore}</span></div> */}
             </div>
             <div className='gameSettingsContainer'>
                 <div className='audioBlock'>                    

@@ -7,11 +7,17 @@ import ErrorComponent from './components/ErrorComponent';
 import WelcomeComponent from './components/Welcome';
 
 function AuthenticatedRoute({children}){
-  const authContext = useAuth();
-  if(authContext.isAuthenticated)
-      return (children);
-  else
-      return <Navigate to="/login"/>;
+  // const authContext = useAuth();
+  // if(authContext.isAuthenticated)
+  console.log("but here")
+  return (children);
+  // else
+  //     return <Navigate to="/login"/>;
+}
+
+function NavigateHome(){
+  console.log("Navigating")
+  return <Navigate to="/BalloonBurst/"/>;
 }
 
 function App() {
@@ -20,14 +26,17 @@ function App() {
       <AuthProvider>
         <BrowserRouter>
           <Routes>
-            <Route path="/signup" element={<SignUpComponent/>}/>
-            <Route path="/login" element={<LoginComponent/>}/>
-            <Route path="/logout" element={<LogoutComponent/>}/>
-            <Route path="/balloonburst" element={
+            <Route path="/BalloonBurst/signup" element={<SignUpComponent/>}/>
+            <Route path="/BalloonBurst/login" element={<LoginComponent/>}/>
+            <Route path="/BalloonBurst/logout" element={<LogoutComponent/>}/>
+            <Route path="/BalloonBurst/game" element={
               <AuthenticatedRoute><GameConsole/></AuthenticatedRoute>
             }/>
-            <Route path="/" element={
+            <Route path="/BalloonBurst/" element={
               <AuthenticatedRoute><WelcomeComponent/></AuthenticatedRoute>
+            }/>
+            <Route path="/BalloonBurst" element={
+              <NavigateHome/>
             }/>
             <Route path="*" element={<ErrorComponent/>}/>
           </Routes>
