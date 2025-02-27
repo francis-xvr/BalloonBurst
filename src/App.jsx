@@ -9,14 +9,12 @@ import WelcomeComponent from './components/Welcome';
 function AuthenticatedRoute({children}){
   // const authContext = useAuth();
   // if(authContext.isAuthenticated)
-  console.log("but here")
   return (children);
   // else
   //     return <Navigate to="/login"/>;
 }
 
 function NavigateHome(){
-  console.log("Navigating")
   return <Navigate to="/BalloonBurst/"/>;
 }
 

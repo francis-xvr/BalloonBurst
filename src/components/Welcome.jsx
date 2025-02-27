@@ -27,7 +27,7 @@ export default function WelcomeComponent(){
     function exitGame(){
         authContext.stopAudio();
         authContext.logout();
-        navigate("/logout");
+        navigate("/BalloonBurst/");
     }
 
     return (

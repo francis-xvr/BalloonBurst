@@ -43,7 +43,7 @@ export default function GameConsole(){
             gameManager.current.stop();
             setTimeout(()=>{
                 setEnd(false);
-                navigate("/");
+                navigate("/BalloonBurst/");
             }, 5000);
         }else{
             setLoading(false);
@@ -62,7 +62,7 @@ export default function GameConsole(){
         if(gameManager.current.isRunning){
             gameManager.current.stop();
         }
-        navigate('/BalloonBurst');
+        navigate('/BalloonBurst/');
     }
     function cancelMenu(){
         authContext.playClick();
@@ -72,7 +72,7 @@ export default function GameConsole(){
             setShowMenu(false);
         }
         else
-            navigate("/BalloonBurst");
+            navigate("/BalloonBurst/");
     }
     const controls = {
         newgame: newGame,

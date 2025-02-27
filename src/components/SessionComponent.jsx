@@ -24,7 +24,7 @@ export function SignUpComponent(){
         if(await authContext.signUpByUsername(username, email)){
             setLoginError(false);
             authContext.playAudio();
-            navigate("/");
+            navigate("/BalloonBurst/");
         }
         else{
             setLoginError(true);
