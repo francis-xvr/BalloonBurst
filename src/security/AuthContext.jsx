@@ -6,7 +6,7 @@ const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
 
 export default function AuthProvider({children}){
-    const audioRef = useRef(new Audio("/audio/gamemusic.mp3"));
+    const audioRef = useRef(new Audio("./audio/gamemusic.mp3"));
     audioRef.current.loop = true;
     const balloonAudRef1 = useRef(new Audio("./audio/burst.mp3"));
     const balloonAudRef2 = useRef(new Audio("./audio/burst2.mp3"));

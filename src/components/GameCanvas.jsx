@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import Balloon from './balloon';
 import { useAuth } from '../security/AuthContext';
 import { updatePlayerHighScore } from '../api/GameManagerService';
-import { StaticBalloon, Balloon as DynamicBalloon } from '../controllers/GameObjects';
+import { Balloon as DynamicBalloon } from '../controllers/GameObjects';
 import LevelProgressCard from './LevelComplete';
 
 export default function GameCanvas(props){
@@ -21,7 +21,7 @@ export default function GameCanvas(props){
 
     useEffect(()=>{
         const container = document.getElementById("gameCanvasContainerID");
-        container.style.cursor = `url('./images/sword.png') 1 1, auto`;
+        container.style.cursor = `url('./images/sword-big.png') 1 1, auto`;
 
         return () => stopTimer();
     },[])
@@ -31,7 +31,7 @@ export default function GameCanvas(props){
         setGameObjects([]);
         setScore(gameManager.current.score);
         setTimeLeft(game.current.gameLevel.completion_time * 60);
-        setReinit(!reinit);
+        setReinit(prev => !prev);
         setShowLevelTitle(true);
         authContext.playLevelReveal();
         setTimeout(startGamePlay, 1000);
@@ -56,8 +56,8 @@ export default function GameCanvas(props){
     },[props.resume]);
 
     function startGamePlay(){
-        if(game.current.gameObjects.length == 0 
-            && game.current.progress == 0){
+        if(game.current.gameObjects.length === 0 
+            && game.current.progress === 0){
             game.current.init();
             setGameObjects(game.current.gameObjects);
             gameManager.current.isPaused=false;
@@ -79,7 +79,7 @@ export default function GameCanvas(props){
     function pokedBalloon(balloonId){
         gameManager.current.updateScore(1);
         setScore(gameManager.current.score);
-        const pokedIndex = gameObjects.findIndex((o)=>(o.id == balloonId));
+        const pokedIndex = gameObjects.findIndex((o)=>(o.id === balloonId));
         if(gameObjects[pokedIndex].isExploded){
             return;
         }
@@ -145,8 +145,12 @@ export default function GameCanvas(props){
         requestAnimationFrame(stepBalloonAnim)
     }
 
+    function avoidRightClick(event){
+        event.preventDefault();
+    }
+
     return (
-        <div id="gameCanvasContainerID" className="gameCanvasContainer">
+        <div id="gameCanvasContainerID" className="gameCanvasContainer" onContextMenu={avoidRightClick}>
             <ScoreCard score={score} level={game.current.level} timeLeft={timeLeft} 
             openMenu={openMenu} reinit={reinit} gameover={showGameOverCard}/>
             {
@@ -196,7 +200,7 @@ function ScoreCard({score, level, timeLeft,  openMenu, reinit, gameover}){
     }, [score]);
 
     function getTime(){
-        if(timeLeft == 30 ){
+        if(timeLeft === 30 ){
             timerDom.current.style.color = "red";
             timerDom.current.style.animation = "blink 0.8s cubic-bezier(0.075, 0.82, 0.165, 1) infinite normal forwards";
         }
@@ -208,7 +212,7 @@ function ScoreCard({score, level, timeLeft,  openMenu, reinit, gameover}){
         <div className='scoreCardCointainer'>
             <div className='levelCard'>
                 <span>Level: {level}</span>
-                <div className='timerSpan'><img className="clock" src="./images/sandclock-white.svg"/><span ref={timerDom} id="timerId"> {getTime()}s</span></div>
+                <div className='timerSpan'><img className="clock" alt="" src="./images/sandclock-white.svg"/><span ref={timerDom} id="timerId"> {getTime()}s</span></div>
             </div>
             <div className={scoreAnimate? "scoreCardAnim" : "scoreCard" }><span className='score'>{score}</span></div>
             {!gameover &&<div className='menuCard'><span onClick={openMenu}>Menu</span></div>}

@@ -27,11 +27,15 @@ export default function Balloon({balloonId, x, y, color, poked, isExploded}){
                 poked(balloonId);
         }
     }
-
+    function handleRightClick(event){
+        event.preventDefault();
+        burst();
+    }
 
 
     return (
-        <div id={balloonId} ref={balloonRef} className="balloonContainer" style={style} onClick={burst}>
+        <div id={balloonId} ref={balloonRef} className="balloonContainer" style={style} 
+        onClick={burst} onContextMenu={handleRightClick}>
         </div>
     );
 }

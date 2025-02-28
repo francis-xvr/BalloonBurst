@@ -43,8 +43,8 @@ export default function WelcomeComponent(){
             </div>
             <div className='playerCardContainer'>
                 <div className='playerNameBlock'>
-                    <img className="playimage" src="./images/playerpic.svg"></img>
-                    <span>{authContext.username}</span>
+                    {/* <img className="playimage" src="./images/playerpic.svg"></img>
+                    <span>{authContext.username}</span> */}
                 </div>
                 {/* <div className='playerScoreBlock'><span>Highscore : {authContext.playerData.highscore}</span>
                     <LeaderBoard/>
